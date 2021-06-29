@@ -1,0 +1,23 @@
+{
+  "name": "todo-nodejs",
+  "version": "1.0.0",
+  "description": "nodejs + express.js + mongodb + mongoose + ejs-locals",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhasuev/todo-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhasuev/todo-nodejs/issues"
+  },
+  "homepage": "https://github.com/jhasuev/todo-nodejs#readme"
+}
