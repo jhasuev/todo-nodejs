@@ -1,0 +1,26 @@
+<% layout("main") %>
+  <form method="POST">
+    <div class="mb-3">
+      <label class="d-block">
+        <div class="form-label">Логин</div>
+        <input type="text" class="form-control">
+      </label>
+      <div class="form-text">
+        <%= typeof errors !='undefined' ? errors.login : "" %>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="d-block">
+        <div class="form-label">Пароль</div>
+        <input type="password" class="form-control">
+      </label>
+      <div class="form-text">
+        <%= typeof errors !='undefined' ? errors.password : "" %>
+      </div>
+      <div class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      Не аккаунта? <a href="#">Зарегистрироваться</a>
+    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+  </form>
