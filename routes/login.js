@@ -10,13 +10,30 @@ module.exports = app => {
     res.render("login", pageDesctiption)
   })
 
-  app.post("/login", (req, res) => {
-    res.render("login", {
-      ...pageDesctiption,
-      errors: {
-        login: "не правильный логин",
-        password: "не правильный пароль..."
+  app.post("/login", async (req, res) => {
+    const login = (req.body.login || "").trim()
+    const password = (req.body.password || "").trim()
+    const errors = {}
+    let user = null
+
+    if (login && password) {
+      user = await User.findOne({ login })
+      if (user) {
+        if (user.password != password) {
+          errors.password = "пароль неверный"
+        }
+      } else {
+        errors.login = "такого пользователя нет"
       }
-    })
+    } else {
+      if (!login) errors.login = "заполните логин"
+      if (!password) errors.password = "заполните пароль"
+    }
+
+    if (Object.keys(errors).length) {
+      res.render("login", { ...pageDesctiption, errors, fields: { login, password } })
+    } else {
+      res.redirect("/todos")
+    }
   })
 }
