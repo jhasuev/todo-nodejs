@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "ejs-locals": "^1.0.2",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.9",
+    "mongoose": "^5.13.0"
   },
   "devDependencies": {},
   "scripts": {

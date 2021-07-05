@@ -1,3 +1,5 @@
+const User = require("../schemes/user")
+
 module.exports = app => {
   const pageDesctiption = {
     title: "Войти на сайт",

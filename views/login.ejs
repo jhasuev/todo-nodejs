@@ -6,7 +6,7 @@
         <input type="text" class="form-control">
       </label>
       <div class="form-text">
-        <%= typeof errors !='undefined' ? errors.login : "" %>
+        <%= typeof errors !='undefined' ? (errors.login || "") : "" %>
       </div>
     </div>
     <div class="mb-3">
@@ -15,7 +15,7 @@
         <input type="password" class="form-control">
       </label>
       <div class="form-text">
-        <%= typeof errors !='undefined' ? errors.password : "" %>
+        <%= typeof errors !='undefined' ? (errors.password || "") : "" %>
       </div>
       <div class="form-text"></div>
     </div>
