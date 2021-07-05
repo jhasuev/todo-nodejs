@@ -7,10 +7,14 @@ module.exports = app => {
   }
 
   app.get("/login", (req, res) => {
+    if (req.session.user) return res.redirect("/")
+
     res.render("login", pageDesctiption)
   })
 
   app.post("/login", async (req, res) => {
+    if (req.session.user) return res.redirect("/")
+    
     const login = (req.body.login || "").trim()
     const password = (req.body.password || "").trim()
     const errors = {}
@@ -33,6 +37,7 @@ module.exports = app => {
     if (Object.keys(errors).length) {
       res.render("login", { ...pageDesctiption, errors, fields: { login, password } })
     } else {
+      req.session.user = user._id
       res.redirect("/todos")
     }
   })

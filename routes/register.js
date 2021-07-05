@@ -45,6 +45,7 @@ module.exports = app => {
     } else {
       const user = new User({ login, password })
       await user.save()
+      req.session.user = user._id
       res.redirect("/register/success")
     }
   })
