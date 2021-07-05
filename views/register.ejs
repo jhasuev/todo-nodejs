@@ -12,7 +12,7 @@
     <div class="mb-3">
       <label class="d-block">
         <div class="form-label">Пароль</div>
-        <input type="text" name="password" class="form-control" value="<%= typeof fields != 'undefined' ? (fields.password || '') : '' %>">
+        <input type="password" name="password" class="form-control" value="<%= typeof fields != 'undefined' ? (fields.password || '') : '' %>">
       </label>
       <div class="form-text  text-danger">
         <%= typeof errors != 'undefined' ? (errors.password || "") : "" %>
@@ -21,7 +21,7 @@
     <div class="mb-3">
       <label class="d-block">
         <div class="form-label">Повторите пароль</div>
-        <input type="text" name="passwordConfirm" class="form-control" value="<%= typeof fields != 'undefined' ? (fields.passwordConfirm || '') : '' %>">
+        <input type="password" name="passwordConfirm" class="form-control" value="<%= typeof fields != 'undefined' ? (fields.passwordConfirm || '') : '' %>">
       </label>
       <div class="form-text  text-danger">
         <%= typeof errors != 'undefined' ? (errors.passwordConfirm || "") : "" %>
