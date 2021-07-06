@@ -1,13 +1,20 @@
+const Todo = require("../schemes/todo")
+
 module.exports = app => {
   const pageDesctiption = {
     title: "Все задачи",
     heading: "Все задачи",
   }
 
-  app.get("/todos", (req, res) => {
-    res.render("todos", pageDesctiption)
+  app.get("/todos", async (req, res) => {
+    if (!req.session.user) return res.redirect("/login")
+    
+    const todos = await Todo.find({})
+    console.log(todos)
+    res.render("todos", { ...pageDesctiption, todos })
   })
 
+  /* 
   app.get("/todos/done/:id", (req, res) => {
     const id = parseInt(req.params.id)
 
@@ -27,4 +34,5 @@ module.exports = app => {
       res.send("removing: incorrect id...")
     }
   })
+  */
 }

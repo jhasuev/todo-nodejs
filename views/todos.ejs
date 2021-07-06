@@ -1,48 +1,19 @@
 <% layout("main") %>
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Название задачи...</h5>
-      <p class="card-text">Описание задачиОписание задачиОписание задачиОписание задачиОписание задачи</p>
-      <div class="d-flex">
-        <a href="#" class="btn btn-primary">Изменить</a>
-        <a href="#" class="btn btn-success mx-2">Готова</a>
-        <a href="/todos/remove/1" class="btn btn-danger" style="margin-left: auto;">Удалить</a>
+  <% if (typeof todos != 'undefined') { %>
+    <% todos.forEach(todo => { %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= todo.title %></h5>
+        <p class="card-text"><%= todo.text %></p>
+        <div class="d-flex">
+          <a href="#" class="btn btn-primary">Изменить</a>
+          <a href="#" class="btn btn-success mx-2">Готова</a>
+          <a href="/todos/remove/1" class="btn btn-danger" style="margin-left: auto;">Удалить</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Название задачи...</h5>
-      <p class="card-text">Описание задачиОписание задачиОписание задачиОписание задачиОписание задачи</p>
-      <div class="d-flex">
-        <a href="#" class="btn btn-primary">Изменить</a>
-        <a href="#" class="btn btn-success mx-2">Готова</a>
-        <a href="#" class="btn btn-danger" style="margin-left: auto;">Удалить</a>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Название задачи...</h5>
-      <p class="card-text">Описание задачиОписание задачиОписание задачиОписание задачиОписание задачи</p>
-      <div class="d-flex">
-        <a href="#" class="btn btn-primary">Изменить</a>
-        <a href="#" class="btn btn-success mx-2">Готова</a>
-        <a href="#" class="btn btn-danger" style="margin-left: auto;">Удалить</a>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Название задачи...</h5>
-      <p class="card-text">Описание задачиОписание задачиОписание задачиОписание задачиОписание задачи</p>
-      <div class="d-flex">
-        <a href="#" class="btn btn-primary">Изменить</a>
-        <a href="#" class="btn btn-success mx-2">Готова</a>
-        <a href="#" class="btn btn-danger" style="margin-left: auto;">Удалить</a>
-      </div>
-    </div>
-  </div>
+    <% }) %>
+  <% } %>
 
   <nav aria-label="Page navigation example">
     <ul class="pagination mt-5">
