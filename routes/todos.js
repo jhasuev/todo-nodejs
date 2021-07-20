@@ -9,8 +9,7 @@ module.exports = app => {
   app.get("/todos", async (req, res) => {
     if (!req.session.user) return res.redirect("/login")
     
-    const todos = await Todo.find({})
-    console.log(todos)
+    const todos = await Todo.find({ uid: req.session.user })
     res.render("todos", { ...pageDesctiption, todos })
   })
 
@@ -25,14 +24,15 @@ module.exports = app => {
     }
   })
 
-  app.get("/todos/remove/:id", (req, res) => {
-    const id = parseInt(req.params.id)
-
-    if (Number.isInteger(id)) {
-      res.send("removing: correct id...")
-    } else {
-      res.send("removing: incorrect id...")
-    }
-  })
   */
+  app.get("/todos/remove/:id", async (req, res) => {
+
+    // если есть совпадение - удалит и возвратить, иначе - null
+    await Todo.findOneAndRemove({
+      _id: req.params.id,
+      uid: req.session.user
+    })
+    
+    res.redirect("/todos")
+  })
 }
