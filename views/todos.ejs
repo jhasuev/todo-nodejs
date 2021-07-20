@@ -7,7 +7,7 @@
         <h6 class="card-subtitle mb-2 text-muted"><%= todo.created %></h6>
         <p class="card-text"><%= todo.text %></p>
         <div class="d-flex">
-          <a href="#" class="btn btn-primary">Изменить</a>
+          <a href="/todos/edit/<%= todo._id %>" class="btn btn-primary">Изменить</a>
           <% if(todo.done) { %>
             <a href="/todos/done/<%= todo._id %>/0" class="btn btn-success mx-2">Вернуть к разработке</a>
           <% } else { %>

@@ -1,0 +1,22 @@
+<% layout("main") %>
+  <form method="POST">
+    <div class="mb-3">
+      <label class="d-block">
+        <div class="form-label">Название задачи</div>
+        <input type="text" class="form-control" name="title"
+          value="<%= typeof fields != 'undefined' ? (fields.title || '') : '' %>">
+      </label>
+      <div class="form-text  text-danger">
+        <%= typeof errors !='undefined' ? (errors.title || "" ) : "" %>
+      </div>
+      <label class="d-block mt-3">
+        <div class="form-label">Описание задачи (необязательно)</div>
+        <textarea name="text" class="form-control"
+          rows="5"><%= typeof fields !='undefined' ? (fields.text || '' ) : '' %></textarea>
+      </label>
+      <div class="form-text  text-danger">
+        <%= typeof errors !='undefined' ? (errors.text || "" ) : "" %>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Изменить задачу</button>
+  </form>
