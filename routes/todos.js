@@ -9,7 +9,25 @@ module.exports = app => {
   app.get("/todos", async (req, res) => {
     if (!req.session.user) return res.redirect("/login")
     
-    const todos = await Todo.find({ uid: req.session.user })
+    let todos = await Todo.find({ uid: req.session.user })
+    todos = JSON.parse(JSON.stringify(todos))
+    todos.forEach(todo => {
+      const date = new Date(todo.created)
+      const times = [
+        date.getFullYear(),
+        '.',
+        date.getMonth() + 1,
+        '.',
+        date.getDate(),
+        ' ',
+        date.getHours(),
+        ':',
+        date.getMinutes(),
+        ':',
+        date.getSeconds(),
+      ]
+      todo.created = times.join('')
+    })
     res.render("todos", { ...pageDesctiption, todos })
   })
 
