@@ -52,7 +52,7 @@ module.exports = app => {
       uid: req.session.user
     })
     
-    res.redirect("/todos")
+    res.redirect(req.get('Referrer') || "/todos")
   })
 
   app.get("/todos/done/:id/:done", async (req, res) => {
@@ -65,6 +65,6 @@ module.exports = app => {
       done,
     })
 
-    res.redirect("/todos")
+    res.redirect(req.get('Referrer') || "/todos")
   })
 }
