@@ -13,18 +13,6 @@ module.exports = app => {
     res.render("todos", { ...pageDesctiption, todos })
   })
 
-  /* 
-  app.get("/todos/done/:id", (req, res) => {
-    const id = parseInt(req.params.id)
-
-    if (Number.isInteger(id)) {
-      res.send("done: correct id...")
-    } else {
-      res.send("done: incorrect id...")
-    }
-  })
-
-  */
   app.get("/todos/remove/:id", async (req, res) => {
 
     // если есть совпадение - удалит и возвратить, иначе - null
@@ -33,6 +21,19 @@ module.exports = app => {
       uid: req.session.user
     })
     
+    res.redirect("/todos")
+  })
+
+  app.get("/todos/done/:id/:done", async (req, res) => {
+    const done = Boolean(req.params.done * 1)
+
+    await Todo.findOneAndUpdate({
+      _id: req.params.id,
+      uid: req.session.user
+    }, {
+      done,
+    })
+
     res.redirect("/todos")
   })
 }

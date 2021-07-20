@@ -7,7 +7,11 @@
         <p class="card-text"><%= todo.text %></p>
         <div class="d-flex">
           <a href="#" class="btn btn-primary">Изменить</a>
-          <a href="#" class="btn btn-success mx-2">Готова</a>
+          <% if(todo.done) { %>
+            <a href="/todos/done/<%= todo._id %>/0" class="btn btn-success mx-2">Вернуть к разработке</a>
+          <% } else { %>
+            <a href="/todos/done/<%= todo._id %>/1" class="btn btn-danger mx-2">Завершить задачу</a>
+          <% } %>
           <a href="/todos/remove/<%= todo._id %>" class="btn btn-danger" style="margin-left: auto;">Удалить</a>
         </div>
       </div>
