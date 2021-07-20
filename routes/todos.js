@@ -9,7 +9,7 @@ module.exports = app => {
   app.get("/todos", async (req, res) => {
     if (!req.session.user) return res.redirect("/login")
     
-    let todos = await Todo.find({ uid: req.session.user })
+    let todos = await Todo.find({ uid: req.session.user }).sort({ created: -1 })
     todos = JSON.parse(JSON.stringify(todos))
     todos.forEach(todo => {
       const date = new Date(todo.created)
