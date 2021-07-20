@@ -5,6 +5,7 @@ module.exports = app => {
   }
 
   app.get("/register/success", (req, res) => {
+    if (!req.session.user) return res.redirect("/login")
     res.render("register-success", pageDesctiption)
   })
 }
